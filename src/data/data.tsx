@@ -56,7 +56,6 @@ const obj3 = Clothing(2, "Joggers", "Puma", "Black", "Bottom", ["Spring","Summer
 ["Running", "For windy weather"], "Very comfortable.", 
 "https://firebasestorage.googleapis.com/v0/b/the-cloud-closet.appspot.com/o/images%2F20210823_113800.jpg?alt=media&token=59c008f6-07ec-4fdb-8fb5-98a7b19f8c69");
 
-localStorage.clear()
 
 // closetDB is array where user's clothing is stored 
 let ClosetDB = [obj1, obj2, obj3];
