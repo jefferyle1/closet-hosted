@@ -15,13 +15,13 @@ function App() {
       <Routes>
 
         {/* MAIN PAGE */}
-        <Route path="closet-hosted" element={<Page> <Header /> <MainPage /> </Page>} />
+        <Route path="/" element={<Page> <Header /> <MainPage /> </Page>} />
 
         {/* ADD CLOTHING PAGE */}
-        <Route path="closet-hosted/add" element={<Page> <Header/> <AddPage /> </Page>} />
+        <Route path="add" element={<Page> <Header/> <AddPage /> </Page>} />
 
         {/* UNIQUE CLOTHING DETIALS PAGE */}
-        <Route path="closet-hosted/item/:id" element={<Page> <Header /> <DetailsPage /> </Page>} />
+        <Route path="item/:id" element={<Page> <Header /> <DetailsPage /> </Page>} />
 
         {/* INVALID LINK  */}
         <Route path="*" exact={true} element={<Page><Header/> <h2> Sorry, this page doesn't exist!</h2></Page>} />

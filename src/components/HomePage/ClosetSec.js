@@ -28,7 +28,7 @@ function RenderCloset(props) {
     let ind = ClosetDB.indexOf(props.closet[i]);
 
     // here, each clothing is given its unique page
-    dispArr.push(<Link to={`/closet-hosted/item/:${ind}`} style={linkStyle}>
+    dispArr.push(<Link to={`/item/:${ind}`} style={linkStyle}>
       <ClothingCard clothing={props.closet[i]} num={ind} /> </Link>);
   }
 
