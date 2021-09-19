@@ -9,14 +9,14 @@ function Header(props) {
     <PageHeader>
       <Div>
         <TextHeader>
-          <Link style={linkStyle} to="/add"><AddButton> <Plus>+</Plus>
+          <Link style={linkStyle} to="/closet-hosted/add"><AddButton> <Plus>+</Plus>
             <AddText> Add A Piece of Clothing </AddText>
           </AddButton></Link>
         </TextHeader>
 
       </Div>
 
-      <Link style={linkStyle} to="/"><TextHeader>The Cloud Closet</TextHeader>  </Link>
+      <Link style={linkStyle} to="/closet-hosted"><TextHeader>The Cloud Closet</TextHeader>  </Link>
       
 
     </PageHeader>

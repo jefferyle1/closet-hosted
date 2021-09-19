@@ -101,7 +101,7 @@ function AddPage(props) {
       tags, desc, url);
 
     if (doNav) {
-      navigate(`/`);
+      navigate(`/closet-hosted`);
     }
   }
 
