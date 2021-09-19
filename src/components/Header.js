@@ -16,7 +16,7 @@ function Header(props) {
 
       </Div>
 
-      <Link style={linkStyle} to="/"><TextHeader>The Cloud Closet</TextHeader>  </Link>
+      <Link style={linkStyle} to="/"><TextHeader>The Virtual Closet</TextHeader>  </Link>
       
 
     </PageHeader>
