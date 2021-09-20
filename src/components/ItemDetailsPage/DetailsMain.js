@@ -39,7 +39,7 @@ function DetailsPage(props) {
   // displays description only if it exists
   function Description(props) {
     if (clothing.desc) { 
-      return (<div> <SubHeading> <div> "Description"</div></SubHeading>
+      return (<div> <SubHeading> <div> Description</div></SubHeading>
       <Desc> {clothing.desc} </Desc></div>
       
       
