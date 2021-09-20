@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
 import { useParams, useNavigate } from "react-router-dom";
 import { ClosetDB, activeFilters, FiltersDB } from '../../data/data';
@@ -21,7 +21,7 @@ function RenderSelection(props) {
 // DetailsPage is the page generated for each clothing item
 function DetailsPage(props) {
 
-    
+
   activeFilters.length = 0;
   let id = useParams().id.substring(1);
   let clothing = ClosetDB[id];
@@ -38,13 +38,13 @@ function DetailsPage(props) {
 
   // displays description only if it exists
   function Description(props) {
-    if (clothing.desc) { 
+    if (clothing.desc) {
       return (<div> <SubHeading> <div> Description</div></SubHeading>
-      <Desc> {clothing.desc} </Desc></div>
-      
-      
+        <Desc> {clothing.desc} </Desc></div>
+
+
       );
-    } else { 
+    } else {
       return (<div></div>);
     }
   }
@@ -52,7 +52,7 @@ function DetailsPage(props) {
   // DisplaySeasons creates a text header with clothing's seasons
   function DisplaySeasons(props) {
     let dispArr = [];
-    
+
     clothing.season.forEach(element => {
       dispArr.push(<StyledP> {element} </StyledP>);
     });
@@ -75,20 +75,19 @@ function DetailsPage(props) {
   }
 
   const [addedTag, setAddedTag] = useState("");
-  
 
-  
+
+
   const onAddChange = (event) => {
     setAddedTag(event.target.value);
   };
 
   // handleTagAdd allows user to add tag to clothing
   const handleTagAdd = (e) => {
-    if (addedTag !== "")  {
+    if (addedTag !== "") {
       ClosetDB[id].tags.push(addedTag)
       localStorage["ClosetDB"] = JSON.stringify(ClosetDB);
       setAddedTag("");
-      
     }
   }
 
@@ -105,7 +104,6 @@ function DetailsPage(props) {
       ClosetDB[id].tags.splice(ind, 1);
       localStorage["ClosetDB"] = JSON.stringify(ClosetDB);
       setDeletedTag("");
-    
     }
   }
 
@@ -123,24 +121,24 @@ function DetailsPage(props) {
 
       <DisplaySeasons />
       <Main>
-         <ClothesImg src={clothing.img} />
-      
+        <ClothesImg src={clothing.img} />
+
 
         <Right>
           <DeleteButton onClick={() => { deleteClothing(clothing, ClosetDB); }}> Delete</DeleteButton >
 
           <DescAndTag>
-            <Description/> 
-            
+            <Description />
+
 
             <SubHeading> Tags </SubHeading>
-            <DisplayTags/>
+            <DisplayTags />
 
           </DescAndTag>
           <Horizontal>
             <TagHandling>
               <div>
-                <button onClick={e => {handleTagDelete(e)}}>Delete A Tag</button>
+                <button onClick={e => { handleTagDelete(e) }}>Delete A Tag</button>
                 <br />
                 <select value={deletedTag} onChange={onDeleteChange} style={{ width: 200 }}>
                   <RenderSelection arr={clothing.tags}></RenderSelection>
@@ -168,34 +166,34 @@ export default DetailsPage;
 
 // STYLING
 const Div = styled.div`
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
- user-select: none;
- height: 90vh;
- width: 95vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  height: 90vh;
+  width: 95vw;
 `;
 
 const DeleteButton = styled.button`
-height: 30px; 
-align-self: flex-end;
-background-color: white;
-cursor: pointer;
-border: 2px solid white;
-border-left: 1px solid black;
-border-bottom: 1px solid black;
+  height: 30px; 
+  align-self: flex-end;
+  background-color: white;
+  cursor: pointer;
+  border: 2px solid white;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
 `;
 
 const Title = styled.h1`
-margin-top: 0px;
-margin-bottom: 5px;
+  margin-top: 0px;
+  margin-bottom: 5px;
 `;
 
 const SeasonsStyle = styled.p`
-margin-bottom: 10px;
-margin-top: 0px;
-display: inline;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  display: inline;
 `;
 
 const StyledP = styled.p`

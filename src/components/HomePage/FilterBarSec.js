@@ -59,7 +59,7 @@ function IndFilter(props) {
         style={active ? { fontWeight: "bold" } : { fontWeight: "normal" }}>
         {name}
       </Ind>
-        <DeleteFilter onDoubleClick={() => { removeTag(name); }}> x </DeleteFilter></Row>
+        <DeleteFilter onClick={() => { removeTag(name); }}> x </DeleteFilter></Row>
     );
   } else {
     return (
