@@ -21,6 +21,13 @@ function RenderSelection(props) {
 // DetailsPage is the page generated for each clothing item
 function DetailsPage(props) {
 
+    
+  activeFilters.length = 0;
+  let id = useParams().id.substring(1);
+  let clothing = ClosetDB[id];
+  let navigate = useNavigate();
+
+
   // deleteClothing removes clothing from ClosetDB 
   function deleteClothing(clothing, ClosetDB) {
     let ind = ClosetDB.indexOf(clothing);
@@ -31,7 +38,7 @@ function DetailsPage(props) {
 
   // displays description only if it exists
   function Description(props) {
-    if (clothing.Description) { 
+    if (clothing.desc) { 
       return (<div> <SubHeading> <div> "Description"</div></SubHeading>
       <Desc> {clothing.desc} </Desc></div>
       
@@ -68,16 +75,20 @@ function DetailsPage(props) {
   }
 
   const [addedTag, setAddedTag] = useState("");
+  
+
+  
   const onAddChange = (event) => {
     setAddedTag(event.target.value);
   };
 
   // handleTagAdd allows user to add tag to clothing
   const handleTagAdd = (e) => {
-    if (addedTag !== "" && !clothing.tags.includes(addedTag)) {
+    if (addedTag !== "")  {
       ClosetDB[id].tags.push(addedTag)
       localStorage["ClosetDB"] = JSON.stringify(ClosetDB);
-      navigate(`/item/:${id}`);
+      setAddedTag("");
+      
     }
   }
 
@@ -89,18 +100,14 @@ function DetailsPage(props) {
 
   // handleTagDelete allows user to remove tag from clothing
   const handleTagDelete = (e) => {
-    if (deletedTag !== "" && clothing.tags.includes(deletedTag)) {
+    if (deletedTag !== "") {
       let ind = clothing.tags.indexOf(deletedTag);
       ClosetDB[id].tags.splice(ind, 1);
       localStorage["ClosetDB"] = JSON.stringify(ClosetDB);
-      navigate(`/item/:${id}`);
+      setDeletedTag("");
+    
     }
   }
-  
-  activeFilters.length = 0;
-  let id = useParams().id.substring(1);
-  let clothing = ClosetDB[id];
-  let navigate = useNavigate();
 
 
   if (!clothing) {
@@ -135,7 +142,7 @@ function DetailsPage(props) {
               <div>
                 <button onClick={e => {handleTagDelete(e)}}>Delete A Tag</button>
                 <br />
-                <select onChange={onDeleteChange} style={{ width: 200 }}>
+                <select value={deletedTag} onChange={onDeleteChange} style={{ width: 200 }}>
                   <RenderSelection arr={clothing.tags}></RenderSelection>
                 </select>
               </div>
@@ -144,7 +151,7 @@ function DetailsPage(props) {
               <div>
                 <button onClick={e => { handleTagAdd(e) }}>Add A Tag</button>
                 <br />
-                <select onChange={onAddChange} style={{ width: 200 }}>
+                <select value={addedTag} onChange={onAddChange} style={{ width: 200 }}>
                   <RenderSelection arr={FiltersDB.UserTags.filter(item => !(clothing.tags.includes(item)))}></RenderSelection>
                 </select>
               </div>

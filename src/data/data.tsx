@@ -35,7 +35,7 @@ let FiltersDB = {
   'allColours': allColours,
   
     'allTypes': allTypes, 
-  'UserTags': ["For windy weather","Running"]
+  'UserTags': []
 }; 
 
 // retries FilterDB from localStorage if it already exists
